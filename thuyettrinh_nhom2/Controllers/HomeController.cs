@@ -17,6 +17,23 @@ namespace thuyettrinh_nhom2.Controllers
         {
             return View();
         }
+        //Phần Login
+        public IActionResult Login(string user, string password)
+        {
+            //Check DB
+            BanHang_TestEntities db = new BanHang_TestEntities();
+            int demTaiKhoan = db.TaiKhoan.Count(m=>m.Username.ToLower == user.ToLower() && m.Password == password);
+            if (demTaiKhoan == 1)
+            {
+                //Mở giao diện admin
+                return View();
+            }
+            else
+            {
+                //Mở Sidebar
+                return View();
+            }
+        }
 
         public IActionResult Privacy()
         {
